@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pink.dao.UserMapper">
+    <select id="getUserLike" resultType="com.pink.pojo.User">
+        select * from user where name like #{value}
+    </select>
+    <select id="getUserList" resultType="com.pink.pojo.User">
+        select * from mybatis.user
+    </select>
+    <select id="getUserById" parameterType="int" resultType="com.pink.pojo.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserById2" parameterType="map" resultType="com.pink.pojo.User">
+        select * from user where id = #{helloId} and name = #{helloName}
+    </select>
+
+    <insert id="addUser" parameterType="com.pink.pojo.User">
+        insert into user(id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <insert id="addUser2" parameterType="map">
+        insert into user(name,pwd) values (#{userName},#{password})
+    </insert>
+
+    <update id="updateUser" parameterType="com.pink.pojo.User">
+        update user set name = #{name},pwd = #{pwd} where id = 4
+    </update>
+    <delete id="delUser" parameterType="com.pink.pojo.User">
+        delete from user where id = #{id}
+    </delete>
+</mapper>
